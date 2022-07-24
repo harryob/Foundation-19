@@ -6674,6 +6674,10 @@
 	icon_state = "dark"
 	},
 /area/centcom)
+"JF" = (
+/obj/machinery/telecomms/allinone/ert,
+/turf/simulated/floor/shuttle/black,
+/area/site53/tram/mtf)
 "JO" = (
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 1
@@ -12583,7 +12587,7 @@ rC
 rC
 mZ
 mZ
-yo
+JF
 EZ
 cm
 cm
