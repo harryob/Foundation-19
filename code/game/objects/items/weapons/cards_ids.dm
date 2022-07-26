@@ -144,6 +144,8 @@ var/const/NO_EMAG_ACT = -50
 
 	var/list/access = list()
 	var/registered_name = "Unknown" // The name registered_name on the card
+	var/comms_prefix = ""
+
 	var/associated_account_number = 0
 	var/list/associated_email_login = list("login" = "", "password" = "")
 
@@ -178,6 +180,7 @@ var/const/NO_EMAG_ACT = -50
 		if(j)
 			rank = j.title
 			assignment = rank
+			comms_prefix = j.comms_prefix
 			access |= j.get_access()
 			if(!detail_color)
 				detail_color = j.selection_color

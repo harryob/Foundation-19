@@ -281,6 +281,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
   /* ###### Prepare the radio connection ###### */
 
 	var/display_freq = freq
+	var/comms_prefix = ""
 
 	var/list/obj/item/device/radio/radios = list()
 
@@ -339,6 +340,14 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	var/list/heard_garbled	= list() // garbled message (ie "f*c* **u, **i*er!")
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
+	if(M)
+		var/obj/item/card/id/I = M.GetIdCard()
+
+		if(I)
+			comms_prefix = I.comms_prefix
+		else
+			comms_prefix = "UNKN"
+
 	for (var/mob/R in receive)
 
 	  /* --- Loop through the receivers and categorize them --- */
@@ -383,7 +392,10 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 	  /* --- Some miscellaneous variables to format the string output --- */
 		var/freq_text = format_frequency(display_freq)
-		if(channel_tag)
+
+		if(comms_prefix != "" && comms_prefix)
+			freq_text = "[channel_tag] ([comms_prefix])"
+		else
 			freq_text = channel_tag
 
 		// Default to commons channel green
